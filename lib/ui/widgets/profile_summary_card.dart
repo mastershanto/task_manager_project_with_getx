@@ -8,20 +8,19 @@ import '../../style/style.dart';
 import '../ui_screens/profile_screens/login_screen.dart';
 import '../ui_screens/profile_screens/update_profile_screen.dart';
 
-class ProfileSummaryCard extends StatefulWidget {
+class ProfileSummeryCard extends StatefulWidget {
   final bool onTapStatus;
 
-  const ProfileSummaryCard({
+  const ProfileSummeryCard({
     super.key,
     this.onTapStatus = true,
   });
 
   @override
-  State<ProfileSummaryCard> createState() => _ProfileSummaryCardState();
+  State<ProfileSummeryCard> createState() => _ProfileSummeryCardState();
 }
 
-class _ProfileSummaryCardState extends State<ProfileSummaryCard> {
-  String? imageData = AuthController.user?.photo!.split("data:image/png;base64")[0];
+class _ProfileSummeryCardState extends State<ProfileSummeryCard> {
   String imageFormat = AuthController.user?.photo ?? '';
 
   @override
@@ -44,7 +43,7 @@ class _ProfileSummaryCardState extends State<ProfileSummaryCard> {
       leading: Visibility(
         visible: imageInBytes.isNotEmpty,
         replacement: const CircleAvatar(
-          backgroundColor: Colors.lightGreen,
+          backgroundColor: Colors.grey,
           child: Icon(Icons.account_circle_outlined),
         ),
         child: CircleAvatar(
@@ -52,7 +51,7 @@ class _ProfileSummaryCardState extends State<ProfileSummaryCard> {
             imageInBytes,
             fit: BoxFit.cover,
           ).image,
-          backgroundColor: Colors.lightGreen,
+          backgroundColor: Colors.grey,
         ),
       ),
       title: Text(
@@ -76,7 +75,7 @@ class _ProfileSummaryCardState extends State<ProfileSummaryCard> {
             );
           }
         },
-        icon: const Icon(Icons.logout,color: Colors.red,),
+        icon: const Icon(Icons.logout),
       ),
       tileColor: PrimaryColor.color,
     );

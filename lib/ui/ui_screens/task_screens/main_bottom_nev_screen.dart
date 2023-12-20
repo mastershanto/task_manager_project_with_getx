@@ -17,10 +17,10 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> screens = const [
-    NewTasksScreen(),
-    ProgressTasksScreen(),
-    CompletedTasksScreen(),
-    CancelTasksScreen(),
+    NewTaskScreen(),
+    ProgressTaskScreen(),
+    CompleteTaskScreen(),
+    CancelTaskScreen(),
   ];
 
   @override

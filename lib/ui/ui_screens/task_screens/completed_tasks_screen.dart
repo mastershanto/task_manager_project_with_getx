@@ -8,14 +8,14 @@ import '../../../style/style.dart';
 import '../../widgets/profile_summary_card.dart';
 import '../../widgets/task_items_card.dart';
 
-class CompletedTasksScreen extends StatefulWidget {
-  const CompletedTasksScreen({super.key});
+class CompleteTaskScreen extends StatefulWidget {
+  const CompleteTaskScreen({super.key});
 
   @override
-  State<CompletedTasksScreen> createState() => _CompletedTasksScreenState();
+  State<CompleteTaskScreen> createState() => _CompleteTaskScreenState();
 }
 
-class _CompletedTasksScreenState extends State<CompletedTasksScreen> {
+class _CompleteTaskScreenState extends State<CompleteTaskScreen> {
   bool getTaskListInProgress = false;
   TaskListModel taskListModel = TaskListModel();
 
@@ -47,7 +47,7 @@ class _CompletedTasksScreenState extends State<CompletedTasksScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            const ProfileSummaryCard(),
+            const ProfileSummeryCard(),
             Expanded(
               child: Visibility(
                 visible: getTaskListInProgress == false,

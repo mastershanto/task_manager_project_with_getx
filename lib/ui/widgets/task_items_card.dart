@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../data/models/task.dart';
 import '../../data/network_caller/network_caller.dart';
 import '../../data/utility/urls.dart';
-
+import '../../style/style.dart';
 
 enum TaskStatus {
   New,
@@ -87,11 +87,11 @@ class _TaskItemsCardState extends State<TaskItemsCard> {
                               builder: (context) {
                                 return AlertDialog(
                                   title: const Text(
-                                    'Warning',
-                                    style: TextStyle(color: Colors.black),
+                                    'Warning!',
+                                    style: TextStyle(color: Colors.red),
                                   ),
                                   content: const Text(
-                                    "The task will be deleted permanently!",
+                                    "Delete it permanently!",
                                   ),
                                   actions: [
                                     TextButton(
@@ -122,7 +122,7 @@ class _TaskItemsCardState extends State<TaskItemsCard> {
                         onPressed: () {
                           showUpdateDialog();
                         },
-                        icon: const Icon(Icons.edit, color: Colors.blue,size:30),
+                        icon: Icon(Icons.edit, color: PrimaryColor.color,size: 30,),
                       ),
                     ],
                   ),
@@ -164,8 +164,8 @@ class _TaskItemsCardState extends State<TaskItemsCard> {
                   Navigator.pop(context);
                 },
                 child: const Text(
-                  "close",
-                  style: TextStyle(color: Colors.red),
+                  "Cancel",
+                  style: TextStyle(color: Colors.blue),
                 ),
               ),
             ],

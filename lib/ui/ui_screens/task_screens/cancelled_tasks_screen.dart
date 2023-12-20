@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../data/models/task_list_model.dart';
 import '../../../data/network_caller/network_caller.dart';
 import '../../../data/network_caller/network_response.dart';
@@ -7,14 +8,14 @@ import '../../../style/style.dart';
 import '../../widgets/profile_summary_card.dart';
 import '../../widgets/task_items_card.dart';
 
-class CancelTasksScreen extends StatefulWidget {
-  const CancelTasksScreen({super.key});
+class CancelTaskScreen extends StatefulWidget {
+  const CancelTaskScreen({super.key});
 
   @override
-  State<CancelTasksScreen> createState() => _CancelTasksScreenState();
+  State<CancelTaskScreen> createState() => _CancelTaskScreenState();
 }
 
-class _CancelTasksScreenState extends State<CancelTasksScreen> {
+class _CancelTaskScreenState extends State<CancelTaskScreen> {
   bool getTaskListInProgress = false;
   TaskListModel taskListModel = TaskListModel();
 
@@ -46,7 +47,7 @@ class _CancelTasksScreenState extends State<CancelTasksScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            const ProfileSummaryCard(),
+            const ProfileSummeryCard(),
             Expanded(
               child: Visibility(
                 visible: getTaskListInProgress == false,

@@ -5,7 +5,7 @@ import '../../../data/network_caller/network_caller.dart';
 import '../../../data/network_caller/network_response.dart';
 import '../../../data/utility/urls.dart';
 import '../../../style/style.dart';
-import '../../controllers/form_validators.dart';
+import '../../controllers/input_validations.dart';
 import '../../widgets/background_image.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -32,7 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BackgroundImage(
+      body: WithBackGroundImage(
         child: Padding(
           padding: const EdgeInsets.only(
             left: 16.0,
@@ -55,7 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       decoration: const InputDecoration(
                         hintText: "Email",
                       ),
-                      validator: FormValidators.emailValidator,
+                      validator: FormValidation.emailValidation,
                     ),
                     const SizedBox(height: 8),
                     TextFormField(
@@ -63,7 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       decoration: const InputDecoration(
                         hintText: "First Name",
                       ),
-                      validator: FormValidators.textValidator,
+                      validator: FormValidation.inputValidation,
                     ),
                     const SizedBox(height: 8),
                     TextFormField(
@@ -71,7 +71,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       decoration: const InputDecoration(
                         hintText: "Last Name",
                       ),
-                      validator: FormValidators.textValidator,
+                      validator: FormValidation.inputValidation,
                     ),
                     const SizedBox(height: 8),
                     TextFormField(
@@ -80,7 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       decoration: const InputDecoration(
                         hintText: "Mobile Name",
                       ),
-                      validator: FormValidators.phoneNumberValidation,
+                      validator: FormValidation.phoneNumberValidation,
                     ),
                     const SizedBox(height: 8),
                     TextFormField(
@@ -89,7 +89,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       decoration: const InputDecoration(
                         hintText: "Password",
                       ),
-                      validator: FormValidators.textValidator,
+                      validator: FormValidation.inputValidation,
                     ),
                     const SizedBox(height: 8),
                     Visibility(

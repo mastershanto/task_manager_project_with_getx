@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BackgroundImage(
+      body: WithBackGroundImage(
         showBottomCircularLoading: true,
         child: Center(
           child: SvgPicture.asset(

@@ -8,14 +8,14 @@ import '../../../style/style.dart';
 import '../../widgets/profile_summary_card.dart';
 import '../../widgets/task_items_card.dart';
 
-class ProgressTasksScreen extends StatefulWidget {
-  const ProgressTasksScreen({super.key});
+class ProgressTaskScreen extends StatefulWidget {
+  const ProgressTaskScreen({super.key});
 
   @override
-  State<ProgressTasksScreen> createState() => _ProgressTasksScreenState();
+  State<ProgressTaskScreen> createState() => _ProgressTaskScreenState();
 }
 
-class _ProgressTasksScreenState extends State<ProgressTasksScreen> {
+class _ProgressTaskScreenState extends State<ProgressTaskScreen> {
   bool getTaskListInProgress = false;
   TaskListModel taskListModel = TaskListModel();
 
@@ -47,7 +47,7 @@ class _ProgressTasksScreenState extends State<ProgressTasksScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            const ProfileSummaryCard(),
+            const ProfileSummeryCard(),
             Expanded(
               child: Visibility(
                 visible: getTaskListInProgress == false,
@@ -61,7 +61,7 @@ class _ProgressTasksScreenState extends State<ProgressTasksScreen> {
                     itemCount: taskListModel.taskList?.length ?? 0,
                     itemBuilder: (context, index) {
                       return TaskItemsCard(
-                        statusColor: Colors.deepPurple,
+                        statusColor: Colors.purple,
                         task: taskListModel.taskList![index],
                         onStatusChangeRefresh: () {
                           getTaskList();

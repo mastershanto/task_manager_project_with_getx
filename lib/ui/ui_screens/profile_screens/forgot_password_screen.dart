@@ -5,7 +5,7 @@ import '../../../data/network_caller/network_caller.dart';
 import '../../../data/network_caller/network_response.dart';
 import '../../../data/utility/urls.dart';
 import '../../../style/style.dart';
-import '../../controllers/form_validators.dart';
+import '../../controllers/input_validations.dart';
 import '../../widgets/background_image.dart';
 import 'pin_verification_screen.dart';
 
@@ -25,7 +25,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BackgroundImage(
+      body: WithBackGroundImage(
         child: Padding(
           padding: const EdgeInsets.only(
             left: 16.0,
@@ -53,7 +53,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                       decoration: const InputDecoration(
                         hintText: "Email",
                       ),
-                      validator: FormValidators.emailValidator,
+                      validator: FormValidation.emailValidation,
                     ),
                     const SizedBox(height: 8),
                     Visibility(
@@ -121,7 +121,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(
-                  builder: (context) => PinVerificationScreen(
+                  builder: (context) => PinVerifyScreen(
                     email: _emailInputTEController.text.trim(),
                   )),
                   (route) => false);

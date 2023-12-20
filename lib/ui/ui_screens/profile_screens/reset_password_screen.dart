@@ -5,20 +5,20 @@ import '../../../data/network_caller/network_caller.dart';
 import '../../../data/network_caller/network_response.dart';
 import '../../../data/utility/urls.dart';
 import '../../../style/style.dart';
-import '../../controllers/form_validators.dart';
+import '../../controllers/input_validations.dart';
 import '../../widgets/background_image.dart';
 import 'login_screen.dart';
 
-class ResetPasswordScreen extends StatefulWidget {
+class SetPasswordScreen extends StatefulWidget {
   final String email;
   final String pin;
-  const ResetPasswordScreen({super.key, required this.email, required this.pin});
+  const SetPasswordScreen({super.key, required this.email, required this.pin});
 
   @override
-  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
+  State<SetPasswordScreen> createState() => _SetPasswordScreenState();
 }
 
-class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
+class _SetPasswordScreenState extends State<SetPasswordScreen> {
   final TextEditingController _newPasswordTEController =
   TextEditingController();
   final TextEditingController _confirmPasswordTEController =
@@ -30,7 +30,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BackgroundImage(
+      body: WithBackGroundImage(
         child: Padding(
           padding: const EdgeInsets.only(
             left: 16.0,
@@ -57,7 +57,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       decoration: const InputDecoration(
                         hintText: "New Password",
                       ),
-                      validator: FormValidators.textValidator,
+                      validator: FormValidation.inputValidation,
                     ),
                     const SizedBox(height: 8),
                     TextFormField(
@@ -65,7 +65,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       decoration: const InputDecoration(
                         hintText: "Confirm Password",
                       ),
-                      validator: FormValidators.textValidator,
+                      validator: FormValidation.inputValidation,
                     ),
                     const SizedBox(height: 8),
                     Visibility(

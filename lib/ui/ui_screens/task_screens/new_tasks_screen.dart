@@ -8,18 +8,18 @@ import '../../../data/network_caller/network_response.dart';
 import '../../../data/utility/urls.dart';
 import '../../../style/style.dart';
 import '../../widgets/profile_summary_card.dart';
-import '../../widgets/tasks_count_summary_card.dart';
+import '../../widgets/summary_card.dart';
 import '../../widgets/task_items_card.dart';
 import 'add_new_tasks_screen.dart';
 
-class NewTasksScreen extends StatefulWidget {
-  const NewTasksScreen({super.key});
+class NewTaskScreen extends StatefulWidget {
+  const NewTaskScreen({super.key});
 
   @override
-  State<NewTasksScreen> createState() => _NewTasksScreenState();
+  State<NewTaskScreen> createState() => _NewTaskScreenState();
 }
 
-class _NewTasksScreenState extends State<NewTasksScreen> {
+class _NewTaskScreenState extends State<NewTaskScreen> {
   bool getTaskListInProgress = false;
   bool getTaskStatusCountInProgress = false;
   TaskListStatusCountModel taskListStatusCountModel =
@@ -71,7 +71,7 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            const ProfileSummaryCard(),
+            const ProfileSummeryCard(),
             Visibility(
               visible: getTaskStatusCountInProgress == false &&
                   (taskListStatusCountModel.taskCountList?.isNotEmpty ?? false),
@@ -89,7 +89,7 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                     TaskCount taskCount =
                     taskListStatusCountModel.taskCountList![index];
                     return FittedBox(
-                      child: TaskCountsSummaryCard(
+                      child: SummaryCard(
                         summaryCount: taskCount.sum.toString(),
                         summaryTitle: taskCount.sId ?? '',
                       ),

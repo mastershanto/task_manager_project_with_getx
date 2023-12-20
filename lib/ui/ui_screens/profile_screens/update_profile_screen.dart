@@ -10,7 +10,7 @@ import '../../../data/network_caller/network_response.dart';
 import '../../../data/utility/urls.dart';
 import '../../../style/style.dart';
 import '../../controllers/auth_controller.dart';
-import '../../controllers/form_validators.dart';
+import '../../controllers/input_validations.dart';
 import '../../widgets/background_image.dart';
 import '../../widgets/profile_summary_card.dart';
 
@@ -51,9 +51,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            const ProfileSummaryCard(onTapStatus: false),
+            const ProfileSummeryCard(onTapStatus: false),
             Expanded(
-              child: BackgroundImage(
+              child: WithBackGroundImage(
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -126,28 +126,28 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             controller: _emailInputTEController,
                             decoration:
                             const InputDecoration(hintText: "Email"),
-                            validator: FormValidators.emailValidator,
+                            validator: FormValidation.emailValidation,
                           ),
                           const SizedBox(height: 8),
                           TextFormField(
                             controller: _firstNameInputTEController,
                             decoration:
                             const InputDecoration(hintText: "First Name"),
-                            validator: FormValidators.textValidator,
+                            validator: FormValidation.inputValidation,
                           ),
                           const SizedBox(height: 8),
                           TextFormField(
                             controller: _lastNameInputTEController,
                             decoration:
                             const InputDecoration(hintText: "Last Name"),
-                            validator: FormValidators.textValidator,
+                            validator: FormValidation.inputValidation,
                           ),
                           const SizedBox(height: 8),
                           TextFormField(
                             controller: _mobileInputTEController,
                             decoration: const InputDecoration(
                                 hintText: "Mobile Number"),
-                            validator: FormValidators.phoneNumberValidation,
+                            validator: FormValidation.phoneNumberValidation,
                           ),
                           const SizedBox(height: 8),
                           TextFormField(

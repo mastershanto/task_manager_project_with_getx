@@ -5,7 +5,7 @@ import '../../../data/network_caller/network_caller.dart';
 import '../../../data/network_caller/network_response.dart';
 import '../../../data/utility/urls.dart';
 import '../../../style/style.dart';
-import '../../controllers/form_validators.dart';
+import '../../controllers/input_validations.dart';
 import '../../widgets/background_image.dart';
 import '../../widgets/snack_message.dart';
 import '../task_screens/main_bottom_nev_screen.dart';
@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BackgroundImage(
+      body: WithBackGroundImage(
         child: Padding(
           padding: const EdgeInsets.only(
             left: 16.0,
@@ -44,6 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const SizedBox(height: 100),
                     Text("Get Started With",
                         style: Theme.of(context).textTheme.bodyLarge),
                     const SizedBox(height: 16),
@@ -53,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       decoration: const InputDecoration(
                         hintText: "Email",
                       ),
-                      validator: FormValidators.emailValidator,
+                      validator: FormValidation.emailValidation,
                     ),
                     const SizedBox(height: 8),
                     TextFormField(
@@ -62,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       decoration: const InputDecoration(
                         hintText: "Password",
                       ),
-                      validator: FormValidators.textValidator,
+                      validator: FormValidation.inputValidation,
                     ),
                     const SizedBox(height: 8),
                     SizedBox(

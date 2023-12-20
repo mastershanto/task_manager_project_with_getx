@@ -4,7 +4,7 @@ import '../../../data/network_caller/network_caller.dart';
 import '../../../data/network_caller/network_response.dart';
 import '../../../data/utility/urls.dart';
 import '../../../style/style.dart';
-import '../../controllers/form_validators.dart';
+import '../../controllers/input_validations.dart';
 import '../../widgets/background_image.dart';
 import '../../widgets/profile_summary_card.dart';
 import '../../widgets/snack_message.dart';
@@ -42,9 +42,9 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
         body: SafeArea(
           child: Column(
             children: [
-              const ProfileSummaryCard(),
+              const ProfileSummeryCard(),
               Expanded(
-                child: BackgroundImage(
+                child: WithBackGroundImage(
                   child: SingleChildScrollView(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -66,7 +66,7 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                               decoration: const InputDecoration(
                                 hintText: "Subject",
                               ),
-                              validator: FormValidators.textValidator,
+                              validator: FormValidation.inputValidation,
                             ),
                             const SizedBox(height: 8),
                             TextFormField(
@@ -74,7 +74,7 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                               maxLines: 5,
                               decoration: const InputDecoration(
                                   hintText: "Description"),
-                              validator: FormValidators.textValidator,
+                              validator: FormValidation.inputValidation,
                             ),
                             const SizedBox(height: 8),
                             SizedBox(

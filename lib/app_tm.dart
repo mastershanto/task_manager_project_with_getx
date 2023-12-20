@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:task_manager_project_with_getx/style/style.dart';
 import 'ui/ui_screens/profile_screens/splash_screen.dart';
 
 class TaskManagerApp extends StatelessWidget {
@@ -48,7 +47,7 @@ class TaskManagerApp extends StatelessWidget {
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 14),
-              backgroundColor: PrimaryColor.color, /*const Color(0xFF21bf73),*/
+              backgroundColor: const Color(0xFF0E4DF2),
             ),
           )),
     );

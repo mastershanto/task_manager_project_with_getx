@@ -9,22 +9,22 @@ import '../../widgets/background_image.dart';
 import 'login_screen.dart';
 import 'reset_password_screen.dart';
 
-class PinVerificationScreen extends StatefulWidget {
+class PinVerifyScreen extends StatefulWidget {
   final String email;
-  const PinVerificationScreen({super.key, required this.email});
+  const PinVerifyScreen({super.key, required this.email});
 
   @override
-  State<PinVerificationScreen> createState() => _PinVerificationScreenState();
+  State<PinVerifyScreen> createState() => _PinVerifyScreenState();
 }
 
-class _PinVerificationScreenState extends State<PinVerificationScreen> {
+class _PinVerifyScreenState extends State<PinVerifyScreen> {
   Map<String, String> pinCode = {'otp': ''};
   bool pinVerifyInProgress = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BackgroundImage(
+      body: WithBackGroundImage(
         child: Padding(
           padding: const EdgeInsets.only(
             left: 16.0,
@@ -130,7 +130,7 @@ class _PinVerificationScreenState extends State<PinVerificationScreen> {
           Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-              builder: (context) => ResetPasswordScreen(
+              builder: (context) => SetPasswordScreen(
                 email: widget.email,
                 pin: pinCode['otp']!,
               ),
