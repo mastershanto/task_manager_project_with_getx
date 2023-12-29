@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:task_manager_project_with_getx/ui/controllers/auth_controller.dart';
 
 import '../../style/style.dart';
+import '../controllers/authentication_controller.dart';
 import '../ui_screens/profile_screens/login_screen.dart';
 import '../ui_screens/profile_screens/update_profile_screen.dart';
 
@@ -21,15 +21,16 @@ class ProfileSummeryCard extends StatefulWidget {
 }
 
 class _ProfileSummeryCardState extends State<ProfileSummeryCard> {
-  String imageFormat = AuthController.user?.photo ?? '';
+  String imageFormat = AuthenticationController.user?.photo ?? "";
 
   @override
   Widget build(BuildContext context) {
     if (imageFormat.startsWith('data:image')) {
       imageFormat =
-          imageFormat.replaceFirst(RegExp(r'data:image/[^;]+;base64,'), '');
+          imageFormat.replaceFirst(RegExp(r'data:image/[^;]+;base64,'), "");
     }
     Uint8List imageInBytes = const Base64Decoder().convert(imageFormat);
+
     return ListTile(
       onTap: () {
         if (widget.onTapStatus == true) {
@@ -47,11 +48,12 @@ class _ProfileSummeryCardState extends State<ProfileSummeryCard> {
           child: Icon(Icons.account_circle_outlined),
         ),
         child: CircleAvatar(
-          backgroundImage: Image.memory(
+          backgroundImage:Image.memory(
             imageInBytes,
             fit: BoxFit.cover,
           ).image,
           backgroundColor: Colors.grey,
+
         ),
       ),
       title: Text(
@@ -59,12 +61,12 @@ class _ProfileSummeryCardState extends State<ProfileSummeryCard> {
         style: Theme.of(context).textTheme.titleLarge,
       ),
       subtitle: Text(
-        AuthController.user?.email ?? '',
+        AuthenticationController.user?.email ?? '',
         style: Theme.of(context).textTheme.titleSmall,
       ),
       trailing: IconButton(
         onPressed: () async {
-          await AuthController.clearUserAuthState();
+          await AuthenticationController.clearUserAuthState();
           if (mounted) {
             Navigator.pushAndRemoveUntil(
               context,
@@ -82,6 +84,6 @@ class _ProfileSummeryCardState extends State<ProfileSummeryCard> {
   }
 
   String get userFullName {
-    return '${AuthController.user?.firstName ?? ''} ${AuthController.user?.lastName ?? ''}';
+    return '${AuthenticationController.user?.firstName ?? ''} ${AuthenticationController.user?.lastName ?? ''}';
   }
 }

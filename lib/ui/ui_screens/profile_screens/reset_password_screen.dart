@@ -6,7 +6,7 @@ import '../../../data/network_caller/network_response.dart';
 import '../../../data/utility/urls.dart';
 import '../../../style/style.dart';
 import '../../controllers/input_validations.dart';
-import '../../widgets/background_image.dart';
+import '../../widgets/background.dart';
 import 'login_screen.dart';
 
 class SetPasswordScreen extends StatefulWidget {
@@ -30,7 +30,7 @@ class _SetPasswordScreenState extends State<SetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WithBackGroundImage(
+      body: Background(
         child: Padding(
           padding: const EdgeInsets.only(
             left: 16.0,
@@ -79,7 +79,7 @@ class _SetPasswordScreenState extends State<SetPasswordScreen> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: setNewPassword,
-                          child: const Text("Confirm"),
+                          child: const Text("Confirm",style: TextStyle(color: Colors.white,),),
                         ),
                       ),
                     ),

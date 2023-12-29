@@ -1,31 +1,25 @@
 import 'package:flutter/material.dart';
 
-class SummaryCard extends StatelessWidget {
-  final String summaryCount;
-  final String summaryTitle;
 
+
+class SummaryCard extends StatelessWidget {
   const SummaryCard({
-    super.key,
-    required this.summaryCount,
-    required this.summaryTitle,
+    super.key,required this.count,required this.title
   });
+
+  final String count;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 32),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              summaryCount.toString(),
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            Text(
-              summaryTitle,
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
+            Text(count.toString(),style:const TextStyle(color: Colors.black,fontSize: 20, fontWeight: FontWeight.w900)),
+            Text(title),
           ],
         ),
       ),

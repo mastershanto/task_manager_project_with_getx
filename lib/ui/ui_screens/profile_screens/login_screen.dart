@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:task_manager_project_with_getx/ui/controllers/auth_controller.dart';
+// import 'package:task_manager_project_with_getx/ui/controllers/authentication_controller.dart';
 import '../../../data/models/user_model.dart';
 import '../../../data/network_caller/network_caller.dart';
 import '../../../data/network_caller/network_response.dart';
 import '../../../data/utility/urls.dart';
 import '../../../style/style.dart';
+import '../../controllers/authentication_controller.dart';
 import '../../controllers/input_validations.dart';
-import '../../widgets/background_image.dart';
+import '../../widgets/background.dart';
 import '../../widgets/snack_message.dart';
 import '../task_screens/main_bottom_nev_screen.dart';
 import 'forgot_password_screen.dart';
@@ -30,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WithBackGroundImage(
+      body: Background(
         child: Padding(
           padding: const EdgeInsets.only(
             left: 16.0,
@@ -80,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: ElevatedButton(
                             onPressed: _login,
                             child:
-                            const Icon(Icons.arrow_circle_right_outlined)),
+                            const Icon(Icons.arrow_circle_right_outlined,color: Colors.white,)),
                       ),
                     ),
                     const SizedBox(height: 48),
@@ -159,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     if (response.isSuccess) {
-      await AuthController.saveUserInformation(
+      await AuthenticationController.saveUserInformation(
         response.jsonResponse["token"],
         UserModel.fromJson(response.jsonResponse['data']),
       );

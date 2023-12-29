@@ -5,7 +5,7 @@ import '../../../data/network_caller/network_response.dart';
 import '../../../data/utility/urls.dart';
 import '../../../style/style.dart';
 import '../../controllers/input_validations.dart';
-import '../../widgets/background_image.dart';
+import '../../widgets/background.dart';
 import '../../widgets/profile_summary_card.dart';
 import '../../widgets/snack_message.dart';
 import 'main_bottom_nev_screen.dart';
@@ -44,7 +44,7 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
             children: [
               const ProfileSummeryCard(),
               Expanded(
-                child: WithBackGroundImage(
+                child: Background(
                   child: SingleChildScrollView(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -88,7 +88,7 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                                 child: ElevatedButton(
                                   onPressed: _createNewTask,
                                   child: const Icon(
-                                      Icons.arrow_circle_right_outlined),
+                                      Icons.arrow_circle_right_outlined,color: Colors.white,),
                                 ),
                               ),
                             ),

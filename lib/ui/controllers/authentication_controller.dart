@@ -8,7 +8,7 @@ import '../../data/models/user_model.dart';
 import '../ui_screens/profile_screens/login_screen.dart';
 
 
-class AuthController {
+class AuthenticationController {
   static String? token;
   static UserModel? user;
 
@@ -52,7 +52,7 @@ class AuthController {
   }
 
   static Future<void> backToLogin() async {
-    await AuthController.clearUserAuthState();
+    await AuthenticationController.clearUserAuthState();
     Navigator.pushAndRemoveUntil(
         TaskManagerApp.navigatorKey.currentContext!,
         MaterialPageRoute(builder: (context) => const LoginScreen()),

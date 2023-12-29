@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class PrimaryColor {
-  static Color color = const Color(0xFF1B4E97);
+  static Color color = const Color(0xFF124893);
 }
 
 PinTheme customPinTheme() {

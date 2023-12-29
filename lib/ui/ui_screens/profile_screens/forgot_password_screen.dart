@@ -6,7 +6,7 @@ import '../../../data/network_caller/network_response.dart';
 import '../../../data/utility/urls.dart';
 import '../../../style/style.dart';
 import '../../controllers/input_validations.dart';
-import '../../widgets/background_image.dart';
+import '../../widgets/background.dart';
 import 'pin_verification_screen.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {
@@ -25,7 +25,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WithBackGroundImage(
+      body: Background(
         child: Padding(
           padding: const EdgeInsets.only(
             left: 16.0,
@@ -68,7 +68,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                         child: ElevatedButton(
                             onPressed: verifyEmailAddress,
                             child:
-                            const Icon(Icons.arrow_circle_right_outlined)),
+                            const Icon(Icons.arrow_circle_right_outlined,color: Colors.white,)),
                       ),
                     ),
                     const SizedBox(height: 48),

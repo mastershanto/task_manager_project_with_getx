@@ -9,9 +9,9 @@ import '../../../data/network_caller/network_caller.dart';
 import '../../../data/network_caller/network_response.dart';
 import '../../../data/utility/urls.dart';
 import '../../../style/style.dart';
-import '../../controllers/auth_controller.dart';
+import '../../controllers/authentication_controller.dart';
 import '../../controllers/input_validations.dart';
-import '../../widgets/background_image.dart';
+import '../../widgets/background.dart';
 import '../../widgets/profile_summary_card.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
@@ -39,10 +39,10 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   @override
   void initState() {
     super.initState();
-    _emailInputTEController.text = AuthController.user?.email ?? '';
-    _firstNameInputTEController.text = AuthController.user?.firstName ?? '';
-    _lastNameInputTEController.text = AuthController.user?.lastName ?? '';
-    _mobileInputTEController.text = AuthController.user?.mobile ?? '';
+    _emailInputTEController.text = AuthenticationController.user?.email ?? '';
+    _firstNameInputTEController.text = AuthenticationController.user?.firstName ?? '';
+    _lastNameInputTEController.text = AuthenticationController.user?.lastName ?? '';
+    _mobileInputTEController.text = AuthenticationController.user?.mobile ?? '';
   }
 
   @override
@@ -53,7 +53,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
           children: [
             const ProfileSummeryCard(onTapStatus: false),
             Expanded(
-              child: WithBackGroundImage(
+              child: Background(
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -215,12 +215,12 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
         setState(() {});
       }
       if (response.isSuccess) {
-        AuthController.updateUserInformation(UserModel(
+        AuthenticationController.updateUserInformation(UserModel(
           email: _emailInputTEController.text.trim(),
           firstName: _firstNameInputTEController.text.trim(),
           lastName: _lastNameInputTEController.text.trim(),
           mobile: _mobileInputTEController.text.trim(),
-          photo: imageInBase64 ?? AuthController.user?.photo,
+          photo: imageInBase64 ?? AuthenticationController.user?.photo,
         ));
         if (mounted) {
           showSnackMessage(context, "Profile Updated Successfully!");

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class WithBackGroundImage extends StatelessWidget {
+class Background extends StatelessWidget {
   final Widget child;
   final bool showBottomCircularLoading;
 
-  const WithBackGroundImage({
+  const Background({
     super.key,
     required this.child,
     this.showBottomCircularLoading = false,

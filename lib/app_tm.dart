@@ -49,7 +49,7 @@ class TaskManagerApp extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 14),
               backgroundColor: const Color(0xFF0E4DF2),
             ),
-          )),
+          ),),
     );
   }
 }

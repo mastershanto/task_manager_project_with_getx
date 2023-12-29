@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager_project_with_getx/ui/widgets/task_items_card.dart';
 
 import '../../../data/models/task_count.dart';
 import '../../../data/models/task_list_model.dart';
@@ -6,10 +7,10 @@ import '../../../data/models/task_list_status_count_model.dart';
 import '../../../data/network_caller/network_caller.dart';
 import '../../../data/network_caller/network_response.dart';
 import '../../../data/utility/urls.dart';
+
 import '../../../style/style.dart';
 import '../../widgets/profile_summary_card.dart';
 import '../../widgets/summary_card.dart';
-import '../../widgets/task_items_card.dart';
 import 'add_new_tasks_screen.dart';
 
 class NewTaskScreen extends StatefulWidget {
@@ -67,6 +68,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -90,8 +92,8 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                     taskListStatusCountModel.taskCountList![index];
                     return FittedBox(
                       child: SummaryCard(
-                        summaryCount: taskCount.sum.toString(),
-                        summaryTitle: taskCount.sId ?? '',
+                        count: taskCount.sum.toString(),
+                        title: taskCount.sId ?? '',
                       ),
                     );
                   },
@@ -139,7 +141,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
           );
         },
         backgroundColor: PrimaryColor.color,
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add,color: Colors.white,),
       ),
     );
   }

@@ -6,7 +6,7 @@ import '../../../data/network_caller/network_response.dart';
 import '../../../data/utility/urls.dart';
 import '../../../style/style.dart';
 import '../../controllers/input_validations.dart';
-import '../../widgets/background_image.dart';
+import '../../widgets/background.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -32,7 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WithBackGroundImage(
+      body: Background(
         child: Padding(
           padding: const EdgeInsets.only(
             left: 16.0,
@@ -106,7 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: _signUp,
-                          child: const Icon(Icons.arrow_circle_right_outlined),
+                          child: const Icon(Icons.arrow_circle_right_outlined,color: Colors.white,),
                         ),
                       ),
                     ),

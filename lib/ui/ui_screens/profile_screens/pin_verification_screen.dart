@@ -5,7 +5,7 @@ import '../../../data/network_caller/network_caller.dart';
 import '../../../data/network_caller/network_response.dart';
 import '../../../data/utility/urls.dart';
 import '../../../style/style.dart';
-import '../../widgets/background_image.dart';
+import '../../widgets/background.dart';
 import 'login_screen.dart';
 import 'reset_password_screen.dart';
 
@@ -24,7 +24,7 @@ class _PinVerifyScreenState extends State<PinVerifyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WithBackGroundImage(
+      body: Background(
         child: Padding(
           padding: const EdgeInsets.only(
             left: 16.0,
@@ -70,7 +70,7 @@ class _PinVerifyScreenState extends State<PinVerifyScreen> {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: verifyPinCode,
-                        child: const Text("Verify"),
+                        child: const Text("Verify",style:TextStyle(color: Colors.white,)),
                       ),
                     ),
                   ),
@@ -111,7 +111,7 @@ class _PinVerifyScreenState extends State<PinVerifyScreen> {
     );
   }
 
-  Future<void> verifyPinCode() async {
+  Future<void>   verifyPinCode() async {
     if (pinCode['otp'] != null && pinCode['otp']?.length == 6) {
       pinVerifyInProgress = true;
       if (mounted) {
