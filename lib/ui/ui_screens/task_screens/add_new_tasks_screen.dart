@@ -8,7 +8,6 @@ import '../../controllers/input_validations.dart';
 import '../../widgets/background.dart';
 import '../../widgets/profile_summary_card.dart';
 import '../../widgets/snack_message.dart';
-import 'main_bottom_nev_screen.dart';
 
 class AddNewTaskScreen extends StatefulWidget {
   const AddNewTaskScreen({super.key});
@@ -28,79 +27,68 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        await Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const MainBottomNavScreen(),
-            ),
-                (route) => false);
-        return false;
-      },
-      child: Scaffold(
-        body: SafeArea(
-          child: Column(
-            children: [
-              const ProfileSummeryCard(),
-              Expanded(
-                child: Background(
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 40,
-                      ),
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Add New Task",
-                              style: Theme.of(context).textTheme.bodyLarge,
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [
+            const ProfileSummeryCard(),
+            Expanded(
+              child: Background(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 40,
+                    ),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Add New Task",
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                          const SizedBox(height: 8),
+                          TextFormField(
+                            controller: _subjectInputTEController,
+                            decoration: const InputDecoration(
+                              hintText: "Subject",
                             ),
-                            const SizedBox(height: 8),
-                            TextFormField(
-                              controller: _subjectInputTEController,
-                              decoration: const InputDecoration(
-                                hintText: "Subject",
+                            validator: FormValidation.inputValidation,
+                          ),
+                          const SizedBox(height: 8),
+                          TextFormField(
+                            controller: _descriptionInputTEController,
+                            maxLines: 5,
+                            decoration: const InputDecoration(
+                                hintText: "Description"),
+                            validator: FormValidation.inputValidation,
+                          ),
+                          const SizedBox(height: 8),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Visibility(
+                              visible: taskInProgress == false,
+                              replacement: Center(
+                                child: CircularProgressIndicator(
+                                    color: PrimaryColor.color),
                               ),
-                              validator: FormValidation.inputValidation,
-                            ),
-                            const SizedBox(height: 8),
-                            TextFormField(
-                              controller: _descriptionInputTEController,
-                              maxLines: 5,
-                              decoration: const InputDecoration(
-                                  hintText: "Description"),
-                              validator: FormValidation.inputValidation,
-                            ),
-                            const SizedBox(height: 8),
-                            SizedBox(
-                              width: double.infinity,
-                              child: Visibility(
-                                visible: taskInProgress == false,
-                                replacement: Center(
-                                  child: CircularProgressIndicator(
-                                      color: PrimaryColor.color),
-                                ),
-                                child: ElevatedButton(
-                                  onPressed: _createNewTask,
-                                  child: const Icon(
-                                      Icons.arrow_circle_right_outlined,color: Colors.white,),
-                                ),
+                              child: ElevatedButton(
+                                onPressed: _createNewTask,
+                                child: const Icon(
+                                    Icons.arrow_circle_right_outlined,color: Colors.white,),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
