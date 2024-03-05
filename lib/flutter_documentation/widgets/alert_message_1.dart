@@ -12,20 +12,20 @@ class AlartMessage_2 {
           builder: (BuildContext Context) {
             return Expanded(
               child: AlertDialog(
-                title: Text("Alart___!"),
-                content: Text("Do you want to delete?"),
+                title: const Text("Alart___!"),
+                content: const Text("Do you want to delete?"),
                 actions: [
                   TextButton(
                       onPressed: () {
                         Navigator.of(context).pop();
                         MySnackBar("The Book has been deleted", context);
                       },
-                      child: Text("Yes")),
+                      child: const Text("Yes")),
                   TextButton(
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child: Text("No")),
+                      child: const Text("No")),
                 ],
               ),
             );

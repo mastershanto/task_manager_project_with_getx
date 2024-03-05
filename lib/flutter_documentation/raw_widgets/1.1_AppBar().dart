@@ -8,8 +8,8 @@ class MyAppBar extends StatelessWidget {
    return AppBar(
      backgroundColor: Colors.lightGreen,
      centerTitle: true,
-     title: Text('Home'),
-     leading: Icon(
+     title: const Text('Home'),
+     leading: const Icon(
        Icons.add_business,
        color: Colors.black,
        size: 40,

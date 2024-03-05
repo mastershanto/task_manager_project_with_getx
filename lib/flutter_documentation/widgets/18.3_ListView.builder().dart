@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TextField_2 extends StatelessWidget {
+  const TextField_2({super.key});
+
 
 
 
@@ -19,24 +21,24 @@ class TextField_2 extends StatelessWidget {
                     alignment: Alignment.center,
                     width: 300,
                     height: 75,
-                    margin: EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.black, width: 2),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: const Text(
                       "Login Here",
                       style: TextStyle(
                           color: Colors.deepPurple,
                           fontSize: 45,
                           fontWeight: FontWeight.bold),
                     ),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.black, width: 2),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  TextField(
+                  const TextField(
                     style: TextStyle(),
                     decoration: InputDecoration(
                       label: Text("Email"),
@@ -63,14 +65,14 @@ class TextField_2 extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   TextField(
                     obscureText: true,
                     controller: TextEditingController(),
-                    style: TextStyle(),
-                    decoration: InputDecoration(
+                    style: const TextStyle(),
+                    decoration: const InputDecoration(
                       label: Text("Password"),
                       labelStyle: TextStyle(color: Colors.black),
                       fillColor: Colors.white,
@@ -95,16 +97,16 @@ class TextField_2 extends StatelessWidget {
                           borderSide: BorderSide(color: Colors.blue)),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   ElevatedButton(
                     onPressed: () {},
-                    child: Text("Login"),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.deepPurple,
                       foregroundColor: Colors.white,
                     ),
+                    child: const Text("Login"),
                   ),
                 ],
               ),
@@ -114,12 +116,11 @@ class TextField_2 extends StatelessWidget {
             alignment: Alignment.center,
             height: 100,
             width: 300,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
             ),
             child: Column(
               children: [InkWell(///GestureDitector same as InkWeel
-                child: Text("masterShanot",style: TextStyle(color: Colors.red),),
                 onLongPress: (){},
                 onDoubleTap: (){
 
@@ -128,7 +129,8 @@ class TextField_2 extends StatelessWidget {
                   print("tapped on masterShanto");
                 },
                 borderRadius: BorderRadius.circular(15),
-                focusColor: Colors.red,
+                focusColor: Colors.red,///GestureDitector same as InkWeel
+                child: const Text("masterShanot",style: TextStyle(color: Colors.red),),
               ),],
             ),
           ),

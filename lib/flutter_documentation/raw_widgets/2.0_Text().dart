@@ -36,7 +36,7 @@ class TextFormat {
           ]),
           decorationColor: Colors.yellow,
           decorationStyle: TextDecorationStyle.solid,
-          shadows: [
+          shadows: const [
             Shadow(color: Colors.grey, blurRadius: 5.0, offset: Offset(4, 1)),
           ]),
       textDirection: TextDirection.rtl,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TextField_2 extends StatelessWidget {
+  const TextField_2({super.key});
+
 
 
 
@@ -100,11 +102,11 @@ class TextField_2 extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {},
-                    child: const Text("Login"),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.deepPurple,
                       foregroundColor: Colors.white,
                     ),
+                    child: const Text("Login"),
                   ),
                 ],
               ),
@@ -119,7 +121,6 @@ class TextField_2 extends StatelessWidget {
             ),
             child: Column(
               children: [InkWell(///GestureDitector same as InkWeel
-                child: const Text("masterShanot",style: TextStyle(color: Colors.red),),
                 onLongPress: (){},
                 onDoubleTap: (){
 
@@ -128,7 +129,8 @@ class TextField_2 extends StatelessWidget {
                   print("tapped on masterShanto");
                 },
                 borderRadius: BorderRadius.circular(15),
-                focusColor: Colors.red,
+                focusColor: Colors.red,///GestureDitector same as InkWeel
+                child: const Text("masterShanot",style: TextStyle(color: Colors.red),),
               ),],
             ),
           ),
