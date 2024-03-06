@@ -66,20 +66,24 @@ class _SetPasswordScreenState extends State<SetPasswordScreen> {
                       validator: FormValidation.inputValidation,
                     ),
                     const SizedBox(height: 8),
-                    Visibility(
-                      visible: _setPasswordController.setPasswordInProgress == false,
-                      replacement: Center(
-                        child: CircularProgressIndicator(
-                          color: PrimaryColor.color,
-                        ),
-                      ),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: setNewPassword,
-                          child: const Text("Confirm",style: TextStyle(color: Colors.white,),),
-                        ),
-                      ),
+                    GetBuilder<SetPasswordController>(
+                      builder: (controller) {
+                        return Visibility(
+                          visible: controller.setPasswordInProgress == false,
+                          replacement: Center(
+                            child: CircularProgressIndicator(
+                              color: PrimaryColor.color,
+                            ),
+                          ),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: setNewPassword,
+                              child: const Text("Confirm",style: TextStyle(color: Colors.white,),),
+                            ),
+                          ),
+                        );
+                      }
                     ),
                     const SizedBox(height: 48),
                     Row(

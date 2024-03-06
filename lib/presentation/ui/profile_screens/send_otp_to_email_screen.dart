@@ -53,20 +53,24 @@ class _SendOtpToEmailScreenState extends State<SendOtpToEmailScreen> {
                       validator: FormValidation.emailValidation,
                     ),
                     const SizedBox(height: 8),
-                    Visibility(
-                      visible: _emailVerificationController.sendOtpToEmailInProgress==false,
-                      replacement: Center(
-                        child: CircularProgressIndicator(
-                          color: PrimaryColor.color,
-                        ),
-                      ),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                            onPressed: verifyEmailAddress,
-                            child:
-                            const Icon(Icons.arrow_circle_right_outlined,color: Colors.white,)),
-                      ),
+                    GetBuilder<SendOtpToEmailController>(
+                      builder: (controller) {
+                        return Visibility(
+                          visible: controller.sendOtpToEmailInProgress==false,
+                          replacement: Center(
+                            child: CircularProgressIndicator(
+                              color: PrimaryColor.color,
+                            ),
+                          ),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                                onPressed: verifyEmailAddress,
+                                child:
+                                const Icon(Icons.arrow_circle_right_outlined,color: Colors.white,)),
+                          ),
+                        );
+                      }
                     ),
                     const SizedBox(height: 48),
                     Row(

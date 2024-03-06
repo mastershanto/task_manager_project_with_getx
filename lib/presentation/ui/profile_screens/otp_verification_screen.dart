@@ -59,19 +59,23 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                     },
                   ),
                   const SizedBox(height: 8),
-                  Visibility(
-                    visible: pinVerifyInProgress == false,
-                    replacement: Center(
-                        child: CircularProgressIndicator(
-                          color: PrimaryColor.color,
-                        )),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: verifyPinCode,
-                        child: const Text("Verify",style:TextStyle(color: Colors.white,)),
-                      ),
-                    ),
+                  GetBuilder<OtpVerificationController>(
+                    builder: (controller) {
+                      return Visibility(
+                        visible: controller.otpVerificationInProgress == false,
+                        replacement: Center(
+                            child: CircularProgressIndicator(
+                              color: PrimaryColor.color,
+                            )),
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: verifyPinCode,
+                            child: const Text("Verify",style:TextStyle(color: Colors.white,)),
+                          ),
+                        ),
+                      );
+                    }
                   ),
                   const SizedBox(height: 48),
                   Row(

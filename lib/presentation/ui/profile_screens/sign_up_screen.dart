@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_manager_project_with_getx/presentation/state_holder/sign_up_controller.dart';
-import 'package:task_manager_project_with_getx/presentation/ui/task_screens/home_screen.dart';
 import 'package:task_manager_project_with_getx/presentation/ui/task_screens/main_bottom_nev_screen.dart';
 import '../../presentation_utility/input_validations.dart';
 import '../../presentation_utility/style.dart';
@@ -92,9 +91,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     const SizedBox(height: 8),
                     GetBuilder<SignUpController>(
-                      builder: (signUpController) {
+                      builder: (controller) {
                         return Visibility(
-                          visible: signUpController.signUpInProgress == false,
+                          visible: controller.signUpInProgress == false,
                           replacement: Padding(
                             padding: const EdgeInsets.only(top: 12),
                             child: Center(
