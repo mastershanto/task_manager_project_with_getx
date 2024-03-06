@@ -1,11 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../../../data/data_utility/urls.dart';
-import '../../../../data/models/network_response.dart';
-import '../../../../data/models/user_model.dart';
-import '../../../../data/services/network_caller.dart';
+import 'package:task_manager_project_with_getx/presentation/state_holder/update_profile_controller.dart';
 import '../../presentation_utility/input_validations.dart';
 import '../../presentation_utility/style.dart';
 import '../../state_holder/authentication_controller.dart';
@@ -32,6 +30,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  final UpdateProfileController _updateProfileController=Get.find<UpdateProfileController>();
   bool updateProfileInProgress = false;
   XFile? photo;
 
@@ -66,7 +65,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           const SizedBox(height: 8),
                           InkWell(
                             onTap: () {
-                              showPhotoPickerBottomModal();
+                              showPhotoPickerBottomSheetModal();
                             },
                             child: Container(
                               height: 50,
@@ -188,10 +187,6 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     String? imageInBase64;
 
     if (_formKey.currentState!.validate()) {
-      updateProfileInProgress = true;
-      if (mounted) {
-        setState(() {});
-      }
 
       Map<String, dynamic> inputData = {
         "email": _emailInputTEController.text.trim(),
@@ -207,20 +202,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
         imageInBase64 = base64Encode(imageInBytes);
         inputData["photo"] = imageInBase64;
       }
-      final NetworkResponse response =
-      await NetworkCaller.postRequest(Urls.profileUpdate, body: inputData);
-      updateProfileInProgress = false;
-      if (mounted) {
-        setState(() {});
-      }
-      if (response.isSuccess) {
-        AuthenticationController.updateUserInformation(UserModel(
-          email: _emailInputTEController.text.trim(),
-          firstName: _firstNameInputTEController.text.trim(),
-          lastName: _lastNameInputTEController.text.trim(),
-          mobile: _mobileInputTEController.text.trim(),
-          photo: imageInBase64 ?? AuthenticationController.user?.photo,
-        ));
+      final bool result=await _updateProfileController.updateProfile(inputData: inputData,password: _passwordInputTEController.text);
+      if (result) {
         if (mounted) {
           showSnackMessage(context, "Profile updated successfully!",true);
         }
@@ -232,7 +215,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     }
   }
 
-  void showPhotoPickerBottomModal() {
+  void showPhotoPickerBottomSheetModal() {
     showModalBottomSheet(
       context: context,
       builder: (context) {

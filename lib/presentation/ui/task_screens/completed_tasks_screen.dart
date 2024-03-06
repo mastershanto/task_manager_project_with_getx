@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../../../../data/data_utility/urls.dart';
-import '../../../../data/models/network_response.dart';
-import '../../../../data/models/task_list_model.dart';
-import '../../../../data/services/network_caller.dart';
 import '../../presentation_utility/style.dart';
+import '../../state_holder/completed_tasks_controller.dart';
 import '../../widgets/profile_summary_card.dart';
 import '../../widgets/task_items_card.dart';
 
@@ -15,30 +13,14 @@ class CompleteTaskScreen extends StatefulWidget {
   State<CompleteTaskScreen> createState() => _CompleteTaskScreenState();
 }
 
-class _CompleteTaskScreenState extends State<CompleteTaskScreen> {
-  bool getTaskListInProgress = false;
-  TaskListModel taskListModel = TaskListModel();
 
-  Future<void> getTaskList() async {
-    getTaskListInProgress = true;
-    if (mounted) {
-      setState(() {});
-    }
-    NetworkResponse response =
-    await NetworkCaller.getRequest(Urls.getCompleteTaskList);
-    if (response.isSuccess) {
-      taskListModel = TaskListModel.fromJson(response.jsonResponse);
-    }
-    getTaskListInProgress = false;
-    if (mounted) {
-      setState(() {});
-    }
-  }
+class _CompleteTaskScreenState extends State<CompleteTaskScreen> {
+  final CompletedTasksController _completedTasksController=Get.find<CompletedTasksController>();
 
   @override
   void initState() {
     super.initState();
-    getTaskList();
+    _completedTasksController.getCompletedTaskList();
   }
 
   @override
@@ -49,31 +31,33 @@ class _CompleteTaskScreenState extends State<CompleteTaskScreen> {
           children: [
             const ProfileSummeryCard(),
             Expanded(
-              child: Visibility(
-                visible: getTaskListInProgress == false,
-                replacement: Center(
-                  child: CircularProgressIndicator(color: PrimaryColor.color),
-                ),
-                child: RefreshIndicator(
-                  color: PrimaryColor.color,
-                  onRefresh: getTaskList,
-                  child: ListView.builder(
-                    itemCount: taskListModel.taskList?.length ?? 0,
-                    itemBuilder: (context, index) {
-                      return TaskItemsCard(
-                        statusColor: PrimaryColor.color,
-                        task: taskListModel.taskList![index],
-                        onStatusChangeRefresh: () {
-                          getTaskList();
+              child: GetBuilder<CompletedTasksController>(
+                builder: (controller) {
+                  return Visibility(
+                    visible: controller.getCompletedTasksInProgress == false,
+                    replacement: Center(
+                      child: CircularProgressIndicator(color: PrimaryColor.color),
+                    ),
+                    child: RefreshIndicator(
+                      color: PrimaryColor.color,
+                      onRefresh: controller.getCompletedTaskList,
+                      child: ListView.builder(
+                        itemCount: controller.taskListModel.taskList?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          return TaskItemsCard(
+                            statusColor: PrimaryColor.color,
+                            task: controller.taskListModel.taskList![index],
+                            onStatusChangeRefresh: () {
+                              controller.getCompletedTaskList();
+                            },
+                            taskUpdateStatusInProgress: (inProgress) {
+                            },
+                          );
                         },
-                        taskUpdateStatusInProgress: (inProgress) {
-                          getTaskListInProgress = inProgress;
-                          setState(() {});
-                        },
-                      );
-                    },
-                  ),
-                ),
+                      ),
+                    ),
+                  );
+                }
               ),
             )
           ],

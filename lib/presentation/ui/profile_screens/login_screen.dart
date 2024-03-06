@@ -67,32 +67,30 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 8),
                     SizedBox(
                       width: double.infinity,
-                      child: Visibility(
-                        visible: loginInProgress == false,
-                        replacement: Padding(
-                          padding: const EdgeInsets.only(top: 8),
-                          child: Center(
-                              child: CircularProgressIndicator(
-                                color: PrimaryColor.color,
-                              )),
-                        ),
-                        child: ElevatedButton(
-                            onPressed: _login,
-                            child:
-                            const Icon(Icons.arrow_circle_right_outlined,color: Colors.white,)),
+                      child: GetBuilder<LoginController>(
+                        builder: (loginController) {
+                          return Visibility(
+                            visible: loginController.loginInProgress == false,
+                            replacement: Padding(
+                              padding: const EdgeInsets.only(top: 8),
+                              child: Center(
+                                  child: CircularProgressIndicator(
+                                    color: PrimaryColor.color,
+                                  )),
+                            ),
+                            child: ElevatedButton(
+                                onPressed: _login,
+                                child:
+                                const Icon(Icons.arrow_circle_right_outlined,color: Colors.white,)),
+                          );
+                        }
                       ),
                     ),
                     const SizedBox(height: 48),
                     Center(
                       child: TextButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                              const SendOtpToEmailScreen(),
-                            ),
-                          );
+                          Get.to(()=> const SendOtpToEmailScreen());
                         },
                         child: const Text(
                           "Forget Password ?",
@@ -110,12 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const SignUpScreen(),
-                              ),
-                            );
+                            Get.to(()=>const SignUpScreen());
                           },
                           child: Text(
                             "Sign up",

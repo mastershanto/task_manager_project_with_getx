@@ -1,6 +1,5 @@
-import 'package:task_manager_project_with_getx/presentation/state_holder/authentication_controller.dart';
 
-class UserModel {
+class UserSignUpModel {
   String? email;
   String? firstName;
   String? lastName;
@@ -8,15 +7,16 @@ class UserModel {
   String? photo;
   String? password;
 
-  UserModel(
-      {this.email, this.firstName, this.lastName, this.mobile, this.photo});
+  UserSignUpModel(
+      {this.email, this.firstName, this.lastName, this.mobile, this.photo, this.password});
 
-  UserModel.fromJson(Map<String, dynamic> json) {
+  UserSignUpModel.fromJson(Map<String, dynamic> json) {
     email = json['email'];
     firstName = json['firstName'];
     lastName = json['lastName'];
     mobile = json['mobile'];
     photo = json['photo'];
+    password = json['password'];
   }
 
   Map<String, dynamic> toJson() {
@@ -26,6 +26,7 @@ class UserModel {
     data['lastName'] = lastName;
     data['mobile'] = mobile;
     data['photo'] = photo;
+    data['password'] = password;
     return data;
   }
 }

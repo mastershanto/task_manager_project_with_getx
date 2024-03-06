@@ -86,13 +86,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                       ),
                       TextButton(
                         onPressed: () {
-                          Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LoginScreen(),
-                            ),
-                                (route) => false,
-                          );
+                          Get.offAll(()=>const LoginScreen());
                         },
                         child: Text(
                           "Sign in",

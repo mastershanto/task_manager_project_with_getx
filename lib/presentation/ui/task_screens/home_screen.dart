@@ -17,9 +17,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final GetTaskListController taskListController =
+  final GetTaskListController _taskListController =
   Get.find<GetTaskListController>();
-  final GetTaskListStatusCountController taskListStatusCountController = Get.find<GetTaskListStatusCountController>();
+  final GetTaskListStatusCountController _taskListStatusCountController = Get.find<GetTaskListStatusCountController>();
 
 
 
@@ -86,8 +86,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           return TaskItemsCard(
                             task: getTaskListController.taskListModel.taskList![index],
                             onStatusChangeRefresh: () {
-                              taskListController.getNewTaskList();
-                              taskListStatusCountController.getNewTaskStatusCount();
+                              _taskListController.getNewTaskList();
+                              _taskListStatusCountController.getNewTaskStatusCount();
                             },
                             taskUpdateStatusInProgress: (inProgress) {
                             },
