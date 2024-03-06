@@ -166,7 +166,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         }
        else {
         Get.showSnackbar(GetSnackBar(
-          title: "Action Successful",
+          title: "Action failed!",
           message: _signUpController.errorMessage,
         ));
       }
